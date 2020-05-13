@@ -9,11 +9,17 @@ const port = 8000;
 app.get("/", (req, res) => res.send(format()));
 
 // res to the client with 'legal terms'
+// when browser is navigated to root/legal
 app.get('/legal', (req, res) => {
     res.send(format('legal stuff'));
 })
 
-// res 
+// a more specific route with required params
+// passes string at page to the req.params.page
+app.get('/legal/:page', (req, res) => res.send(format(req.params.page)));
+
+
+
 app.get('/about', (req, res) => {
     res.send(format('about page'));
 })
